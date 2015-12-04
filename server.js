@@ -36,7 +36,7 @@ app.get('/api', function api_index (req, res){
     endpoints: [
       {method: "GET", path: "/api", description: "Describes available endpoints"}
     ]
-  })
+  });
 });
 
 /**********

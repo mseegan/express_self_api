@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Blank</title>
+    <title>head back</title>
 
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -21,9 +21,80 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <h1>Under Construction</h1>
+          <h1>Matt's Test Server</h1>
+          <div class="col-md-2 col-md-offset-2">
+          <img class="logo" src="http://localhost:3000/profile_image.png">
+          </div>
         </div>
       </div>
     </div>
+   
+   <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        
+        <!-- new vidya form-->
+        <form class="form-inline" id="create-vidya">
+          <div class="form-group">
+            <input type="text" name="vidyas" class="form-control" placeholder="vidyas" autofocus>
+          </div>
+          <div class="form-group">
+            <input type="text" name="genre" class="form-control" placeholder="genre">
+          </div>
+          <div class="form-group">
+            <input type="submit" class="btn btn-default" value="Add Vidya">
+          </div>
+        </form>
+        <br>
+
+        <!-- list of vidyas -->
+        <ul class="list-group" id="vidyas-list">
+          
+          <!-- handlebars template -->
+          <script id="vidyas-template" type="text/x-handlebars-template">
+            {{#each vidyas}}
+              <li class="list-group-item vidya" data-id="{{_id}}">
+
+                <!-- vidya label (vidyas) -->
+                <span class="label label-default">{{vidyas}}</span>
+                
+                <!-- vidya genre -->
+                {{genre}}
+
+                <div class="pull-right">
+                  <!-- pencil icon to toggle update form -->
+                  <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-{{_id}}">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                  </a>
+                  
+                  <!-- trash can icon to delete vidya -->
+                   <a href="javascript:void(0)" class="delete-vidya">
+                    <span class="glyphicon glyphicon-trash"></span>
+                  </a>
+                </div>
+                
+                <!-- form to update vidya -->
+                <div class="collapse" id="update-{{_id}}">
+                  <br>
+                  <form class="form-inline update-vidya">
+                    <div class="form-group">
+                      <input type="text" name="vidyas" class="form-control" placeholder="vidyas" value="{{vidyas}}">
+                    </div>
+                    <div class="form-group">
+                      <input type="text" name="genre" class="form-control" placeholder="genre" value="{{genre}}">
+                    </div>
+                    <div class="form-group">
+                      <input type="submit" class="btn btn-block btn-default" value="Update">
+                    </div>
+                  </form>
+                </div>
+              </li>
+            {{/each}}
+          </script>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
   </body>
 </html>
